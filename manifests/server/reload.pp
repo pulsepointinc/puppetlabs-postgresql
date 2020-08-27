@@ -7,7 +7,7 @@ class postgresql::server::reload {
   exec { 'postgresql_reload':
     path        => '/usr/bin:/usr/sbin:/bin:/sbin',
     command     => $service_reload,
-    onlyif      => $service_status,
+    #onlyif      => $service_status, #Failed to call refresh: invalid byte sequence in US-ASCII with puppet apply
     refreshonly => true,
     require     => Class['postgresql::server::service'],
   }
