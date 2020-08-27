@@ -8,7 +8,8 @@ class postgresql::server::reload {
     path        => '/usr/bin:/usr/sbin:/bin:/sbin',
     command     => $service_reload,
     onlyif      => $service_status,
-    #refreshonly => true,
+    refreshonly => true,
+    provider    => shell,
     require     => Class['postgresql::server::service'],
   }
 }
