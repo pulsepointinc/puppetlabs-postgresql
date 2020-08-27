@@ -7,9 +7,8 @@ class postgresql::server::reload {
   exec { 'postgresql_reload':
     path        => '/usr/bin:/usr/sbin:/bin:/sbin',
     command     => $service_reload,
-    #onlyif      => $service_status,
-    onlyif      => '/usr/bin/systemctl status postgresql-9.6',
-    refreshonly => true,
+    onlyif      => $service_status,
+    #refreshonly => true,
     require     => Class['postgresql::server::service'],
   }
 }
