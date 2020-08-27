@@ -9,7 +9,6 @@ class postgresql::server::reload {
     command     => $service_reload,
     onlyif      => $service_status,
     refreshonly => true,
-    provider    => shell,
     require     => Class['postgresql::server::service'],
   }
 }
